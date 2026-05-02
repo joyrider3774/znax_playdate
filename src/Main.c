@@ -1,7 +1,7 @@
 #include "pd_api.h"
 #include "defines.h"
 #include "znax.h"
-#include "Common.h"
+#include "common.h"
 #include "Pd_helperfuncs.h"
 
 #ifdef _WINDLL
