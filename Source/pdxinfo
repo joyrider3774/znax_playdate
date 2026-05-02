@@ -1,0 +1,7 @@
+name=Znax
+author=Willems Davy aka Joyrider3774
+description=Match 4 corners of a rectangle game
+bundleID=com.joyrider3774.znax
+version=1.0
+imagePath=metadata
+buildNumber=3
