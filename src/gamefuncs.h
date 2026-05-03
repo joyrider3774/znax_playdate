@@ -2,6 +2,7 @@
 #define GAMEFUNCS_H
 
 void DrawStatusBar();
+void ResetHighScores();
 void SaveHighScores();
 void LoadHighScores();
 char chr(int ascii);

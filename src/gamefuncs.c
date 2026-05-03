@@ -23,6 +23,20 @@ uint8_t calcCRC(void *data, size_t len) {
   return crc;
 }
 
+void ResetHighScores()
+{
+    memset(&saveData, 0, sizeof(SaveData));
+    saveData.magic = SAVE_MAGIC;
+
+    for (int Teller = 0; Teller < 10; Teller++)
+    {
+        strcpy(saveData.HighScores[Fixed][Teller].PName, "joyrider");
+        strcpy(saveData.HighScores[Relative][Teller].PName, "joyrider");
+        saveData.HighScores[Fixed][Teller].PScore = 0;
+        saveData.HighScores[Relative][Teller].PScore = 0;
+    }
+}
+
 void LoadHighScores()
 {
     SDFile* File = pd->file->open("savedata", kFileReadData);
@@ -35,16 +49,7 @@ void LoadHighScores()
     uint8_t crc = calcCRC(&saveData, sizeof(SaveData) - sizeof(uint8_t));
     if (saveData.magic != SAVE_MAGIC || saveData.crc != crc) 
     {
-        memset(&saveData, 0, sizeof(SaveData));
-        saveData.magic = SAVE_MAGIC;
-
-        for (int Teller = 0;Teller<10;Teller++)
- 	    {
- 	        strcpy(saveData.HighScores[Fixed][Teller].PName,"joyrider");
- 	        strcpy(saveData.HighScores[Relative][Teller].PName,"joyrider");
- 	        saveData.HighScores[Fixed][Teller].PScore = 0;
- 	        saveData.HighScores[Relative][Teller].PScore = 0;
- 	    }
+        ResetHighScores();
     }
 }
 

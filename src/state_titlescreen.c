@@ -5,11 +5,23 @@
 #include "cmainmenu.h"
 #include "state_titlescreen.h"
 #include "sound.h"
+#include "pd_api.h"
+#include "Pd_helperfuncs.h"
+#include "gamefuncs.h"
 
+void MenuItem1Callback(void* userdata)
+{
+    ResetHighScores();
+    SaveHighScores();
+}
 
 void TitleScreenInit()
 {
     SelectMusic(musTitle, 0);
+    if (menu1 == NULL)
+    {
+        menu1 = pd->system->addMenuItem("Clear HiScore", MenuItem1Callback, NULL);
+    }
 }
 
 void TitleScreen()
@@ -25,12 +37,17 @@ void TitleScreen()
     if ((currButtons & kButtonDown) && !(prevButtons & kButtonDown))  
         CMainMenu_NextItem(MainMenu);
     if ((currButtons & kButtonA) && !(prevButtons & kButtonA))
-    {      
+    {
         playMenuAcknowlege();
         switch(CMainMenu_GetSelection(MainMenu))
         {
             case 1:
                 GameState = GSGameTypeMenuInit;
+                if (menu1)
+                {
+                    pd->system->removeMenuItem(menu1);
+                    menu1 = NULL;
+                }
                 break;
             case 2:
                 //so that it shows both gameplay modes
@@ -39,6 +56,11 @@ void TitleScreen()
                 break;
             case 3:
                 GameState = GSCreditsInit;
+                if (menu1)
+                {
+                    pd->system->removeMenuItem(menu1);
+                    menu1 = NULL;
+                }
                 break;
             default:
                 break;

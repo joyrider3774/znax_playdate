@@ -46,6 +46,7 @@ void resetGlobals() {
     IMG_relativetimer2 = NULL;
     IMG_blocks = NULL;
 
+    menu1 = NULL;
     GlobalSoundEnabled = true;
     Timer = 150;
     AddToScore = 0;
@@ -85,6 +86,7 @@ void terminateGame() {
     CWorldParts_Destroy(World);
     CGameTypeMenu_Destroy(MenuGameType);
     CMainMenu_Destroy(MainMenu);
+    pd->system->removeAllMenuItems();
 }
 
 int mainLoop(void* userdata) {
