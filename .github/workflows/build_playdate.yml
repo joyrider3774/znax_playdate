@@ -43,6 +43,7 @@ jobs:
           rm -rf Source/Source2
           rm -rf Source/Source3
           rm -rf Source/Source4
+          rm -rf Source/Source5
 
       - name: Build
         run: |
