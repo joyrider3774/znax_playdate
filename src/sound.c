@@ -16,6 +16,10 @@ AudioSample *BlockSelectSample, * deleteSample, * errorSample, * fiveminuteSampl
 void setMusicOn(uint8_t value)
 {
     music_on = value;
+    if (!music_on)
+    {
+        pd->sound->fileplayer->stop(MusicPlayer);
+    }
 }
 
 
@@ -24,6 +28,8 @@ void SelectMusic(uint8_t musicFile, uint8_t loop)
     if (prev_music != musicFile)
     {
 		prev_music = musicFile;
+        if (!music_on)
+            return;
         switch (musicFile)
         {
             case musTitle:

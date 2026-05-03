@@ -18,7 +18,7 @@ struct CWorldParts;
 bool GlobalSoundEnabled = true;
 int Timer = 150, AddToScore = 0;
 int GameState = GSIntro;
-PDMenuItem *menu1 = NULL;
+PDMenuItem *menu1 = NULL, *menu2 = NULL, *menu3 = NULL;
 long int Score;
 int GameType = Fixed;
 SaveData saveData;

@@ -5,6 +5,8 @@ void DrawStatusBar();
 void ResetHighScores();
 void SaveHighScores();
 void LoadHighScores();
+void SaveSettings();
+void LoadSettings();
 char chr(int ascii);
 int ord(char chr);
 void loadGraphics();

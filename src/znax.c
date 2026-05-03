@@ -47,6 +47,8 @@ void resetGlobals() {
     IMG_blocks = NULL;
 
     menu1 = NULL;
+    menu2 = NULL;
+    menu3 = NULL;
     GlobalSoundEnabled = true;
     Timer = 150;
     AddToScore = 0;
@@ -71,8 +73,7 @@ void setupGame() {
     LoadHighScores();
     initSound();
     initMusic();
-    setSoundOn(true);
-    setMusicOn(true);
+    LoadSettings();
     
     pd->graphics->setBackgroundColor(kColorWhite);
     pd->display->setOffset((LCD_COLUMNS - WINDOW_WIDTH) >> 1, (LCD_ROWS - WINDOW_HEIGHT) >> 1);

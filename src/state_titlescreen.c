@@ -12,6 +12,25 @@
 
 void MenuItem1Callback(void* userdata)
 {
+    int tmp = pd->system->getMenuItemValue(menu1);
+    setMusicOn(tmp);
+    if (isMusicOn())
+    {
+        SelectMusic(musNone, 0);
+        SelectMusic(musTitle, 0);
+    }
+    SaveSettings();
+}
+
+void MenuItem2Callback(void* userdata)
+{
+    int tmp = pd->system->getMenuItemValue(menu2);
+    setSoundOn(tmp);
+    SaveSettings();
+}
+
+void MenuItem3Callback(void* userdata)
+{
     ResetHighScores();
     SaveHighScores();
     playMenuAcknowlege();
@@ -22,8 +41,19 @@ void TitleScreenInit()
     SelectMusic(musTitle, 0);
     if (menu1 == NULL)
     {
-        menu1 = pd->system->addMenuItem("Clear HiScore", MenuItem1Callback, NULL);
+        menu1 = pd->system->addCheckmarkMenuItem("Music", isMusicOn(), MenuItem1Callback, NULL);
     }
+    
+    if (menu2 == NULL)
+    {
+        menu2 = pd->system->addCheckmarkMenuItem("Sound", isSoundOn(), MenuItem2Callback, NULL);
+    }
+
+    if (menu3 == NULL)
+    {
+        menu3 = pd->system->addMenuItem("Clear HiScore", MenuItem3Callback, NULL);
+    }
+
 }
 
 void TitleScreen()
@@ -45,10 +75,10 @@ void TitleScreen()
         {
             case 1:
                 GameState = GSGameTypeMenuInit;
-                if (menu1)
+                if (menu3)
                 {
-                    pd->system->removeMenuItem(menu1);
-                    menu1 = NULL;
+                    pd->system->removeMenuItem(menu3);
+                    menu3 = NULL;
                 }
                 break;
             case 2:
@@ -58,10 +88,10 @@ void TitleScreen()
                 break;
             case 3:
                 GameState = GSCreditsInit;
-                if (menu1)
+                if (menu3)
                 {
-                    pd->system->removeMenuItem(menu1);
-                    menu1 = NULL;
+                    pd->system->removeMenuItem(menu3);
+                    menu3 = NULL;
                 }
                 break;
             default:

@@ -15,7 +15,7 @@ extern LCDBitmap *IMG_timeover, *IMG_highscores, * IMG_background, * IMG_ready, 
 	* IMG_relativetimer1, * IMG_relativetimer2;
 extern LCDBitmapTable* IMG_blocks;
 extern LCDFont* font;
-extern PDMenuItem *menu1;
+extern PDMenuItem *menu1, *menu2, *menu3;
 extern bool GlobalSoundEnabled;
 extern int Timer, AddToScore;
 extern int GameState;

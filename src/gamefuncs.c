@@ -5,6 +5,7 @@
 #include "defines.h"
 #include "Pd_helperfuncs.h"
 #include "pd_api.h"
+#include "sound.h"
 
 #define SAVE_MAGIC 0xDADA
 
@@ -21,6 +22,34 @@ uint8_t calcCRC(void *data, size_t len) {
     }
   }
   return crc;
+}
+
+void SaveSettings()
+{
+    int sound = isSoundOn();
+    int music = isMusicOn();
+    SDFile* File = pd->file->open("settings", kFileWrite);
+    if (File)
+    {
+        pd->file->write(File, &sound, sizeof(sound));
+        pd->file->write(File, &music, sizeof(music));
+        pd->file->close(File);
+    }
+}
+
+void LoadSettings()
+{
+    int sound = 1;
+    int music = 1;
+    SDFile* File = pd->file->open("settings", kFileReadData);
+    if (File)
+    {
+        pd->file->read(File, &sound, sizeof(sound));
+        pd->file->read(File, &music, sizeof(music));
+        pd->file->close(File);
+    }
+    setMusicOn(music);
+    setSoundOn(sound);
 }
 
 void ResetHighScores()
