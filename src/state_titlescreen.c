@@ -8,11 +8,13 @@
 #include "pd_api.h"
 #include "Pd_helperfuncs.h"
 #include "gamefuncs.h"
+#include "sound.h"
 
 void MenuItem1Callback(void* userdata)
 {
     ResetHighScores();
     SaveHighScores();
+    playMenuAcknowlege();
 }
 
 void TitleScreenInit()
