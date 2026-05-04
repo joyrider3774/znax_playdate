@@ -18,7 +18,7 @@ Znax is a remake of a game by Nick Kouvaris. It is a sort of puzzle / arcade gam
 
 | Key         | Action                                        |
 |-------------|-----------------------------------------------|
-| SPACE, A    | Confirm in menus, slect a block               |
+| SPACE, A    | Confirm in menus, select a block               |
 | B           | Back to titlescreen                           |
 | ARROW KEYS  | Selections in menus, move Selector            |
 | ENTER       | System menu                                   |
@@ -51,4 +51,4 @@ All Graphics were made by Willems Davy initially for the gp2x version in jasc pa
 Game Sounds are some parts recorded by Willems Davy and modified with goldwave studio (for the voices), some parts were made using SFXR
 
 ## License
-* License of my part of game's code is MIT
+License of my part of game's code is MIT
